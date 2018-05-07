@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import request
 import hashlib
+from lxml.etree import parse
+
 
 app = Flask(__name__)
 
@@ -20,7 +22,18 @@ def check():
     if hashcode == signature:
         return echostr
     if request.method == 'POST':
-        return 111
+        str_xml = request.data  # 获得post来的数据
+        xml = lxml.fromstring(str_xml)  # 进行XML解析
+        msgType = xml.find("MsgType").text
+        fromUser = xml.find("FromUserName").text
+        toUser = xml.find("ToUserName").text
+        if msgType == 'text':
+            content = xml.find("Content").text
+            return self.render.reply_text(fromUser, toUser, int(time.time()), content)
+        elif msgType == 'image':
+            pass
+        else:
+            pass
 
 
 if __name__ == '__main__':
