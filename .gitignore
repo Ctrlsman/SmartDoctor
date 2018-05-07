@@ -66,3 +66,4 @@ migrations/
 temp/
 
 key/
+/config/local.py

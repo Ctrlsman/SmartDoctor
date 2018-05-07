@@ -3,7 +3,6 @@ from flask import request
 
 import hashlib
 from xml.etree import ElementTree as ET
-import time
 
 app = Flask(__name__)
 
@@ -33,4 +32,4 @@ def check():
 
 
 if __name__ == '__main__':
-    app.run(port=8099)
+    app.run()
