@@ -1,8 +1,9 @@
 from flask import Flask
 from flask import request
-import hashlib
-from lxml.etree import parse
 
+import hashlib
+from xml.etree import ElementTree as ET
+import time
 
 app = Flask(__name__)
 
@@ -21,19 +22,21 @@ def check():
     hashcode = hashlib.sha1(s.encode()).hexdigest()
     if hashcode == signature:
         return echostr
-    if request.method == 'POST':
-        str_xml = request.data  # 获得post来的数据
-        xml = lxml.fromstring(str_xml)  # 进行XML解析
+    if request.data:
+        xml = ET.fromstring(request.data)
+        me = xml.find("ToUserName").text
+        user = xml.find("FromUserName").text
+        postTime = str(int(time.time()))
         msgType = xml.find("MsgType").text
-        fromUser = xml.find("FromUserName").text
-        toUser = xml.find("ToUserName").text
-        if msgType == 'text':
-            content = xml.find("Content").text
-            return self.render.reply_text(fromUser, toUser, int(time.time()), content)
-        elif msgType == 'image':
-            pass
-        else:
-            pass
+        if msgType == 'event':
+            e = xml.find('Event').text
+            if e == 'subscribe':
+                return '欢迎光临，非常高兴能为您服务！回复h开始尽享方便快捷生活吧~'
+            elif e == 'unsubscribe':
+                return '非常荣幸能为您服务！下次再见～'
+        # msgid check. if repeat, reponse with ""
+        msgid = xml.find("MsgId").text
+        return '111'
 
 
 if __name__ == '__main__':
