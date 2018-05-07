@@ -8,7 +8,7 @@ import time
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def check():
     token = 'wodexiangmu'
     req_data = request.args
