@@ -26,17 +26,10 @@ def check():
         xml = ET.fromstring(request.data)
         me = xml.find("ToUserName").text
         user = xml.find("FromUserName").text
-        postTime = str(int(time.time()))
+        content = xml.find('Content').text
         msgType = xml.find("MsgType").text
-        if msgType == 'event':
-            e = xml.find('Event').text
-            if e == 'subscribe':
-                return '欢迎光临，非常高兴能为您服务！回复h开始尽享方便快捷生活吧~'
-            elif e == 'unsubscribe':
-                return '非常荣幸能为您服务！下次再见～'
-        # msgid check. if repeat, reponse with ""
-        msgid = xml.find("MsgId").text
-        return '111'
+        if msgType == 'text':
+            return content
 
 
 if __name__ == '__main__':
