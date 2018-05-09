@@ -9,11 +9,11 @@ HTTP_PORT = 8989
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 if ENV == 'dev':
-    from config.dev import *
+    from doctor.config.dev import *
 else:
-    from config.prd import *
+    from doctor.config.prd import *
 
 try:
-    from config.local import *
+    from doctor.config.local import *
 except ImportError:
     pass
