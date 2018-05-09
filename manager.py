@@ -4,5 +4,14 @@ from doctor import create_app
 
 app = create_app()
 
+
+@app.cli.command()
+def start():
+    host = config.HTTP_HOST
+    port = config.HTTP_PORT
+    print('* Running on http://{}:{}/ (Press CTRL+C to quit)'.format(host, port))
+    app.run(host=host, port=port, use_reloader=False)
+
+
 if __name__ == '__main__':
     main()

@@ -6,6 +6,7 @@ from doctor import config
 import requests
 from flask import request, redirect
 from flask import current_app
+from wechat_sdk import WechatBasic
 from doctor.models.base import redis_pool_get
 
 
