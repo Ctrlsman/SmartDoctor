@@ -66,4 +66,4 @@ migrations/
 temp/
 
 key/
-doctor/config/local.py
+/SmartDoctor/doctor/config/local.py
