@@ -66,4 +66,4 @@ migrations/
 temp/
 
 key/
-/config/local.py
+doctor/config/local.py
