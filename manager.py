@@ -1,6 +1,7 @@
 # -*- coding：utf-8 -*-
 from flask.cli import main
 from doctor import create_app
+from doctor import config
 
 app = create_app()
 
