@@ -98,6 +98,7 @@ def register_after_request(app):
 def register_err_handler(app):
     @app.errorhandler(DoctorException)
     def handle_api_err(err):
+        logger.error(traceback.format_exc())
         return err.to_result()
 
     @app.errorhandler(Exception)
@@ -114,8 +115,6 @@ def create_app():
     app.config.from_object(config)
 
     db.init_app(app)
-    redis_pool_connect()
-
     register_blueprints(app, 'doctor.views')
     register_after_request(app)
     register_err_handler(app)
