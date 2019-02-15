@@ -73,7 +73,12 @@ class Express100(object):
 
         data.update(company_info)
 
-        return data
+        res = []
+        print(data['data'])
+        for i in data['data']:
+            res.append(i['time'] + '-' + i['context'] + '\n')
+
+        return res
 
 
 if __name__ == "__main__":

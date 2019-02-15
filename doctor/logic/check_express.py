@@ -69,8 +69,6 @@ class Express100(object):
 
         data.update(company_info)
 
-        data = json.dumps(data, ensure_ascii=False, sort_keys=True, indent=4)
-
         res = []
         for i in data['data']:
             res.append(i['time'] + '-' + i['context'] + '\n')
