@@ -2,4 +2,4 @@
 
 DEBUG = False
 
-LOG_PATH = ''
+LOG_PATH = '/root/doctor_api.log'
