@@ -9,6 +9,7 @@ from doctor.response import JsonResponse
 from doctor.exceptions.base import DoctorException
 from flask import Flask
 from flask import request
+from doctor.models.base import db
 from werkzeug.utils import find_modules
 
 logger = logging.getLogger(__name__)
