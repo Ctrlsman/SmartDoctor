@@ -6,7 +6,6 @@ import traceback
 from doctor import config
 from doctor.log.handle import MidnightRotatingFileHandler
 from doctor.response import JsonResponse
-from doctor.models.base import db, redis_pool_connect
 from doctor.exceptions.base import DoctorException
 from flask import Flask
 from flask import request
