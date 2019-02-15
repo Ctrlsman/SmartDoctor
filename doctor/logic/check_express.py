@@ -73,4 +73,4 @@ class Express100(object):
         for i in data['data']:
             res.append(i['time'] + '-' + i['context'] + '\n')
 
-        return res
+        return ''.join(res)
